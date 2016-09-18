@@ -1,0 +1,9 @@
+<div class="btn-group" uib-dropdown dropdown-append-to-body style="width:100%">
+  <button type="button" class="btn btn-success " style="width:100%" uib-dropdown-toggle>
+    {{selection}} <span class="caret"></span>
+  </button>
+  <ul uib-dropdown-menu >
+    <li ng-repeat="s in selections" ng-click="setSelection(s)"><a href>{{s}}</a></li>
+  </ul>
+</div>
+<div id="dashboard-line-chart-4" class="admin-chart"></div>

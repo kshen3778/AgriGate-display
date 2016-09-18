@@ -6,14 +6,14 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.dashboard')
-      .directive('trafficChart', trafficChart);
+      .directive('mapBubbles2', mapBubbles2);
 
   /** @ngInject */
-  function trafficChart() {
+  function mapBubbles2() {
     return {
       restrict: 'E',
-      controller: 'TrafficChartCtrl',
-      templateUrl: 'app/pages/dashboard/trafficChart/trafficChart.html'
+      controller: 'MapBubble2PageCtrl',
+      templateUrl: 'app/pages/dashboard/map-bubbles-2/map-bubbles-2.html'
     };
   }
 })();
