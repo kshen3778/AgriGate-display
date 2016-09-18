@@ -63,7 +63,7 @@
 
           // create circle for each country
           console.log(mapData.length);
-          for (var i = 0; i < mapData.length; i+=10) {
+          for (var i = 0; i < mapData.length; i++) {
             //console.log(mapData[1]);
             //console.log(mapData[1]);
             //console.log(mapData[2]);
@@ -99,8 +99,8 @@
               width: size,
               height: size,
               color: colour,
-              longitude: mapData[i][0],
-              latitude: mapData[i][1],
+              longitude: mapData[i][1],
+              latitude: mapData[i][0],
               value: letter
             });
           }
@@ -111,7 +111,7 @@
           };
 
           $timeout(function() {
-            map.write('map-bubbles3');
+            map.write('map-bubbles');
           }, 100);
       });
     }
