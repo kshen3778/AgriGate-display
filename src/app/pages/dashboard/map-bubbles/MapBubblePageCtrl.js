@@ -15,7 +15,7 @@
 
     $scope.submit = function(){
       console.log("submit");
-      $http.get("http://10.21.36.45:8000/moisture?c1=" + $scope.lat1 + "," + $scope.long1 + "&c2=" + $scope.lat2 + "," + $scope.long2).then(function(response) {
+      $http.get("http://104.196.35.38:8000/moisture?c1=" + $scope.lat1 + "," + $scope.long1 + "&c2=" + $scope.lat2 + "," + $scope.long2).then(function(response) {
           console.log(response.data.moisture);
 
 

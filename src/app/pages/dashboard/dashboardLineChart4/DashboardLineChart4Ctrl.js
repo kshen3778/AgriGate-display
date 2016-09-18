@@ -21,7 +21,7 @@
 
     }*/
     function plotData(selection){
-      $http.get("https://agrigate-data-kshen3778.c9users.io/farms/" + selection).then(function(response) {
+      $http.get("http://104.196.35.38:8001/farms/" + selection).then(function(response) {
           console.log(response.data);
 
           var layoutColors = baConfig.colors;

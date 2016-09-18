@@ -15,7 +15,7 @@
 
     $scope.submit = function(){
       console.log("submit");
-      $http.get("http://10.21.36.45:8000/looseSoil?c1=" + $scope.lat1 + "," + $scope.long1 + "&c2=" + $scope.lat2 + "," + $scope.long2).then(function(response) {
+      $http.get("http://104.196.35.38:8000/looseSoil?c1=" + $scope.lat1 + "," + $scope.long1 + "&c2=" + $scope.lat2 + "," + $scope.long2).then(function(response) {
           console.log(response);
 
 
@@ -76,32 +76,22 @@
             }
             var size = Math.sqrt(square / (Math.PI * 2));
             var colour;
+            var letter;
             //var id = dataItem.code;
 
-            if( mapData[i][2] <= 0.10){
-              colour = "#e6ecff";
-            }else if(mapData[i][2] <= 0.15){
-              colour = "#ccd9ff";
-            }else if(mapData[i][2] <= 0.20){
-              colour = "#b3c6ff";
-            }else if(mapData[i][2] <= 0.25){
-              colour = "#99b3ff";
-            }else if(mapData[i][2] <= 0.30){
-              colour = "#809fff";
-            }else if(mapData[i][2] <= 0.35){
-              colour = "#668cff";
-            }else if(mapData[i][2] <= 0.40){
-              colour = "#4d79ff";
-            }else if(mapData[i][2] <= 0.45){
-              colour = "#3366ff";
-            }else if(mapData[i][2] <= 0.50){
-              colour = "#1a53ff";
-            }else if(mapData[i][2] <= 0.55){
-              colour = "#0040ff";
-            }else if(mapData[i][2] <= 0.60){
-              colour = "#0039e6";
+            if( mapData[i][2] == ("A")){
+              console.log("A");
+              colour = "#996633";
+              letter = 4;
+            }else if(mapData[i][2] == ("B")){
+              colour = "#bf8040";
+              letter = 3;
+            }else if(mapData[i][2] == ("C")){
+              colour = "#cc9966";
+              letter = 2;
             }else{
-              colour = "#0033cc";
+              colour = "#d9b38c";
+              letter = 1;
             }
             size=20;
             dataProvider.images.push({
@@ -111,7 +101,7 @@
               color: colour,
               longitude: mapData[i][0],
               latitude: mapData[i][1],
-              value: mapData[i][2]
+              value: letter
             });
           }
 
@@ -121,7 +111,7 @@
           };
 
           $timeout(function() {
-            map.write('map-bubbles');
+            map.write('map-bubbles3');
           }, 100);
       });
     }
