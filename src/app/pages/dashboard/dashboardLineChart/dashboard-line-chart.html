@@ -1,0 +1,13 @@
+<div class="btn-group" uib-dropdown dropdown-append-to-body style="width:100%">
+  <button type="button" class="btn btn-success " style="width:100%" uib-dropdown-toggle>
+    {{food}} <span class="caret"></span>
+  </button>
+  <ul uib-dropdown-menu>
+    <li ng-click="setFood('Orange')"><a href>Orange</a></li>
+    <li ng-click="setFood('Wheat')"><a href>Wheat</a></li>
+    <li ng-click="setFood('Banana')"><a href>Banana</a></li>
+    <li ng-click="setFood('Soybean')"><a href>Soybean</a></li>
+    <li ng-click="setFood('Rice')"><a href>Rice</a></li>
+  </ul>
+</div>
+<div id="dashboard-line-chart" class="admin-chart"></div>

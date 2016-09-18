@@ -10,6 +10,7 @@
 
   /** @ngInject */
   function DashboardMapCtrl(baConfig, layoutPaths) {
+    console.log("line chart");
     var layoutColors = baConfig.colors;
     var map = AmCharts.makeChart('amChartMap', {
       type: 'map',
