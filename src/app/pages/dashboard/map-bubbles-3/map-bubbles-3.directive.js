@@ -6,14 +6,14 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.dashboard')
-      .directive('mapBubbles2', mapBubbles2);
+      .directive('mapBubbles3', mapBubbles3);
 
   /** @ngInject */
-  function mapBubbles2() {
+  function mapBubbles3() {
     return {
       restrict: 'E',
-      controller: 'MapBubblePage2Ctrl',
-      templateUrl: 'app/pages/dashboard/map-bubbles-2/map-bubbles-2.html'
+      controller: 'MapBubblePage3Ctrl',
+      templateUrl: 'app/pages/dashboard/map-bubbles-3/map-bubbles-3.html'
     };
   }
 })();

@@ -6,19 +6,21 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.dashboard')
-      .controller('MapBubblePage2Ctrl', MapBubble2PageCtrl);
+      .controller('MapBubblePage3Ctrl', MapBubblePage3Ctrl);
 
   /** @ngInject */
-  function MapBubble2PageCtrl($scope, baConfig, $timeout, layoutPaths, $http) {
+  function MapBubblePage3Ctrl($scope, baConfig, $timeout, layoutPaths, $http) {
     console.log("hello");
 
 
     $scope.submit = function(){
       console.log("submit");
-      $http.get("http://10.21.36.45:8000/vegetation?c1=" + $scope.lat1 + "," + $scope.long1 + "&c2=" + $scope.lat2 + "," + $scope.long2).then(function(response) {
+      $http.get("http://10.21.36.45:8000/looseSoil?c1=" + $scope.lat1 + "," + $scope.long1 + "&c2=" + $scope.lat2 + "," + $scope.long2).then(function(response) {
           console.log(response);
 
-          var mapData = response.data.vegetation;
+
+
+          var mapData = response.data.loose;
           console.log(mapData);
 
           var map;
@@ -29,7 +31,7 @@
 
           // get min and max values
           for (var i = 0; i < mapData.length; i++) {
-            var value = mapData[i][2];
+            var value = mapData[i].value;
             if (value < min) {
               min = value;
             }
@@ -42,7 +44,7 @@
           AmCharts.theme = AmCharts.themes.blur;
           map = new AmCharts.AmMap();
 
-          map.addTitle('Vegetation Levels', 14);
+          map.addTitle('Moisture Levels', 14);
           map.areasSettings = {
             unlistedAreasColor: '#000000',
             unlistedAreasAlpha: 0.1
@@ -73,36 +75,35 @@
               square = minSquare;
             }
             var size = Math.sqrt(square / (Math.PI * 2));
-            //var id = dataItem.code;
-            size=20;
             var colour;
             //var id = dataItem.code;
 
-            if( mapData[i][2] <= 0.90){
-              colour = "#99ff99";
-            }else if(mapData[i][2] <= 0.91){
-              colour = "#80ff80";
-            }else if(mapData[i][2] <= 0.92){
-              colour = "#66ff66";
-            }else if(mapData[i][2] <= 0.93){
-              colour = "#4dff4d";
-            }else if(mapData[i][2] <= 0.94){
-              colour = "#33ff33";
-            }else if(mapData[i][2] <= 0.95){
-              colour = "#1aff1a";
-            }else if(mapData[i][2] <= 0.96){
-              colour = "#00ff00";
-            }else if(mapData[i][2] <= 0.97){
-              colour = "#00e600";
-            }else if(mapData[i][2] <= 0.98){
-              colour = "#00cc00";
-            }else if(mapData[i][2] <= 0.99){
-              colour = "#00b300";
-            }else if(mapData[i][2] <= 1.00){
-              colour = "#009900";
+            if( mapData[i][2] <= 0.10){
+              colour = "#e6ecff";
+            }else if(mapData[i][2] <= 0.15){
+              colour = "#ccd9ff";
+            }else if(mapData[i][2] <= 0.20){
+              colour = "#b3c6ff";
+            }else if(mapData[i][2] <= 0.25){
+              colour = "#99b3ff";
+            }else if(mapData[i][2] <= 0.30){
+              colour = "#809fff";
+            }else if(mapData[i][2] <= 0.35){
+              colour = "#668cff";
+            }else if(mapData[i][2] <= 0.40){
+              colour = "#4d79ff";
+            }else if(mapData[i][2] <= 0.45){
+              colour = "#3366ff";
+            }else if(mapData[i][2] <= 0.50){
+              colour = "#1a53ff";
+            }else if(mapData[i][2] <= 0.55){
+              colour = "#0040ff";
+            }else if(mapData[i][2] <= 0.60){
+              colour = "#0039e6";
             }else{
-              colour = "#008000";
+              colour = "#0033cc";
             }
+            size=20;
             dataProvider.images.push({
               type: 'circle',
               width: size,
@@ -121,7 +122,7 @@
 
           $timeout(function() {
             map.write('map-bubbles');
-          }, 50);
+          }, 100);
       });
     }
 

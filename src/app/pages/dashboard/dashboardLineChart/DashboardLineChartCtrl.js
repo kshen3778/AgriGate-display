@@ -22,7 +22,7 @@
     }*/
     function plotData(food){
       $http.get("https://agrigate-data-kshen3778.c9users.io/food/" + food).then(function(response) {
-          console.log(response.data.dataset.data);
+          console.log(response);
 
           var layoutColors = baConfig.colors;
           var id = $element[0].getAttribute('id');
@@ -30,12 +30,12 @@
           console.log(element.getAttribute('id'));
 
 
-          var orangeData = response.data.dataset.data;
+          var orangeData = response.data;
           var chartData = [];
-          for(var i = 0; i < orangeData.length; i++){
+          for(var i = 0; i < orangeData[0].length; i++){
             chartData.push({
-              "year": orangeData[i][0],
-              "value": orangeData[i][1]
+              "year": orangeData[0][i],
+              "value": orangeData[1][i]
             });
           }
 
